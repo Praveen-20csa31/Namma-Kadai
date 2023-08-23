@@ -59,6 +59,29 @@ def add_purchase():
     cursor.close()
 
     return render_template('add_purchase.html', items=items )   
+@app.route('/add_sale', methods=['GET', 'POST'])
+def add_sale():
+    if request.method == 'POST':
+        item_id = int(request.form['item_id'])
+        quantity = int(request.form['quantity'])
+        price_per_item = float(request.form['price_per_item'])
+
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT price FROM Company")
+        cash_balance = cursor.fetchone()[0]
+
+        total_revenue = price_per_item * quantity
+
+        cursor.execute("UPDATE Company SET cash_balance = cash_balance + %s", (total_revenue,))
+        cursor.execute("UPDATE Item SET qty = qty - %s WHERE item_id = %s", (quantity, item_id))
+        mysql.connection.commit()
+    
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT item_id, item_name, qty, price FROM Item")
+    items = cursor.fetchall()
+    cursor.close()
+
+    return render_template('add_sale.html', items=items)
 
 if __name__ == '__main__':
     app.run(debug=True)
