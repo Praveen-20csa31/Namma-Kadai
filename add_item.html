@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--<html>
+<head>
+    <title>Namma Kadai - Add/Edit/View Items</title>
+</head>
+<body>
+    <h1>Add/Edit/View Items</h1>
+    <form method="post" action="{{ url_for('add_item') }}">
+        <div>
+            <label for="item_name">Item Name:</label>
+            <input type="text" id="item_name" name="item_name" required>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+        </div>
+        <button type="submit">Add Item</button>
+    </form>
+    <table>
+        <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.item_name }}</td>
+            <td>{{ item.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-sm nbg">
+        <div class="container">
+          <a class="navbar-brand" href="#"> <span><i class="bi bi-shop"></i></span> &nbsp;Nammakadai</a>
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
+              <ul class="navbar-nav mt-lg-0">
+                  
+                  <li class="nav-item">
+                      <a class="nav-link" href="/add_item">add item</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/add_purchase">Purchase item</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/add_sale">Sale item</a>
+                  </li>
+                  
+              </ul>
+          </div>
+    </div>
+  </nav>
+  </header>
+  <main>
+        <div class="container">
+            <form method="post" action="{{ url_for('add_item') }}" >
+                <div class="mb-3 row">
+                    <label for="item_name" class="col-4 col-form-label">Item</label>
+                    <div class="col-8">
+                        <input type="text" id="item_name" name="item_name" required class="form-control" placeholder="item">
+                    </div>
+                    
+                </div>
+                <div class="mb-3 row">
+                    <label for="price" class="col-4 col-form-label">price</label>
+                    <div class="col-8">
+                        <input type="number" id="price" name="price"required class="form-control" placeholder="price">
+                    </div>
+                </div>
+                
+                <div class="mb-3 row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <button type="submit" class="btn btn-primary">add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

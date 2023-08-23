@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Namma Kadai - Add/View Sales</title>
+</head>
+<body>
+    <h1>Add/View Sales</h1>
+    <form method="post" action="/add_sale">
+        <!-- Add form fields here -->
+        <button type="submit">Add Sale</button>
+    </form>
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Amount</th>
+        </tr>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.timestamp }}</td>
+            <td>{{ sale.item_name }}</td>
+            <td>{{ sale.qty }}</td>
+            <td>{{ sale.rate }}</td>
+            <td>{{ sale.amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
